@@ -17,6 +17,9 @@ class ViewController: UIViewController {
     
     private var bubble : BubbleView!
     
+    private var hBubble : BubbleView!
+    private var vBubble : BubbleView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -37,6 +40,14 @@ class ViewController: UIViewController {
         bubble.backgroundColor = .clear
         self.view.addSubview(bubble)
         
+        hBubble = BubbleView(frame: horView.frame)
+        hBubble.backgroundColor = .clear
+//        horView.addSubview(hBubble)
+        self.view.addSubview(hBubble)
+        
+        vBubble = BubbleView(frame: verView.frame)
+        vBubble.backgroundColor = .clear
+        self.view.addSubview(vBubble)
     }
     
     func initCircle() {
@@ -104,6 +115,25 @@ class ViewController: UIViewController {
 //        let circleSize = imgView.frame.size
 //        let horRoundBox = horView.frame.size
 //        let verRoundBox = verView.frame.size
+        let horPostion = horView.frame
+        
+        print("X: \(horPostion.origin.x), Y:\(horPostion.origin.y)")
+        
+        let hbubbleX = horPostion.origin.x
+        let hbubbleY = horPostion.origin.y
+        
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: [], animations: {
+            self.hBubble.frame.origin.x = hbubbleX + 73
+            self.hBubble.frame.origin.y = hbubbleY
+//            self.hBubble.bounds = CGRect(x: 120, y: 5, width: 20, height: 20)
+        }, completion: { _ in
+            UIView.animate(withDuration: 1.0, delay: 0.0, options: [], animations: {
+             self.hBubble.frame.origin.x = 20
+//                self.hBubble.bounds.origin.y = 5
+//                self.hBubble.bounds = CGRect(x: 10, y: 5, width: 20, height: 20)
+            }, completion: nil)
+        })
+        
         
         UIView.animate(withDuration: 1.0, delay: 0.0, options: [], animations: {
             self.bubble.frame.origin.x = 120
