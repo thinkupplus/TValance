@@ -35,10 +35,9 @@ class ViewController: UIViewController {
     }
     
     func initbubble() {
-//        bubble = BubbleView(frame: imgView.frame)
-//
-//        bubble.backgroundColor = .clear
-//        self.view.addSubview(bubble)
+        bubble = BubbleView(frame: imgView.frame)
+        bubble.backgroundColor = .clear
+        self.view.addSubview(bubble)
 //
         hBubble = BubbleView(frame: horView.frame)
         hBubble.backgroundColor = .clear
@@ -108,18 +107,11 @@ class ViewController: UIViewController {
     
     
     @IBAction func btn_Right_T(_ sender: UIButton) {
+        let circleSize = imgView.frame.size
         let horRoundBox = horView.frame.size
-        //        let verRoundBox = verView.frame.size
-        //        let horPostion = horView.frame
-        //
-        //        print("X: \(horPostion.origin.x), Y:\(horPostion.origin.y)")
-        //        print("width: \(horPostion.size.width) height: \(horPostion.size.height)")
-                
-        //        let hbubbleX = horPostion.origin.x
-        //        let hbubbleY = horPostion.origin.y
-                
+                        
         let horRoundBboxWidth = ((horRoundBox.width / 2) - 15)
-        
+                
         let transx1 : CGFloat = horRoundBboxWidth * -1.0
         let transx2 : CGFloat = horRoundBboxWidth * 1.0
         print("width: \(horRoundBox.width) height: \(horRoundBox.height)")
@@ -128,6 +120,24 @@ class ViewController: UIViewController {
         let move = CGAffineTransform(translationX: transx2, y: 0)
 
         self.hBubble.transform = move
+        
+        let verRoundBoxHeight = ((verView.frame.size.height / 2) - 15)
+        let trancy1 : CGFloat = verRoundBoxHeight * -1.0
+        let trancy2 : CGFloat = verRoundBoxHeight * 1.0
+        
+        let movey = CGAffineTransform(translationX: 0, y: trancy2)
+        
+        self.vBubble.transform = movey
+        
+        let radius = (circleSize.width - 10) / 2
+        print("radius = \(radius)")
+        
+        let cirX  : CGFloat = 102.0 //radius * -1.0
+        let cirY  : CGFloat = 102.0 //radius * 1.0
+        
+        let cirmove = CGAffineTransform(translationX: cirX, y: cirY)
+
+        self.bubble.transform = cirmove
 
 //        UIView.animate(withDuration: 0.5, delay: 0.0, options: [], animations: {
 //        //             self.hBubble.frame.origin.x = 20
@@ -143,16 +153,10 @@ class ViewController: UIViewController {
         print("Touch")
         // 각각의 이미지 사이즈를 계산해서 넘어가지 않도록 해야 한다.
         
-//        let circleSize = imgView.frame.size
+        let circleSize = imgView.frame.size
         let horRoundBox = horView.frame.size
 //        let verRoundBox = verView.frame.size
-//        let horPostion = horView.frame
-//
-//        print("X: \(horPostion.origin.x), Y:\(horPostion.origin.y)")
-//        print("width: \(horPostion.size.width) height: \(horPostion.size.height)")
-        
-//        let hbubbleX = horPostion.origin.x
-//        let hbubbleY = horPostion.origin.y
+
         
         let horRoundBboxWidth = ((horRoundBox.width / 2) - 20)
         
@@ -165,6 +169,22 @@ class ViewController: UIViewController {
         
         self.hBubble.transform = move
         
+        let verRoundBoxHeight = ((verView.frame.size.height / 2) - 15)
+        let trancy1 : CGFloat = verRoundBoxHeight * -1.0
+        let trancy2 : CGFloat = verRoundBoxHeight * 1.0
+        
+        let movey = CGAffineTransform(translationX: 0, y: trancy1)
+        
+        self.vBubble.transform = movey
+        
+        
+        let radius = (circleSize.width - 10) / 2
+        
+        let cirX  : CGFloat = 102.0 //radius * -1.0
+        let cirY  : CGFloat = -60.0 //radius * 1.0
+        
+        let cirmove = CGAffineTransform(translationX: cirX, y: cirY)
+        self.bubble.transform = cirmove
 //        UIView.animate(withDuration: 0.5, delay: 0.0, options: [], animations: {
 //
 //            let move = CGAffineTransform(translationX: transx1, y: 0)
